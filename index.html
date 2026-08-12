@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./src/reset.css">
+  <link rel="stylesheet" href="./src/base.css">
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="./src/css/responsive.css">
+  <title>Contact form</title>
+
+</head>
+
+<body>
+  <main>
+    <form class="card">
+      <h1>Contact Us</h1>
+
+      <div>
+        <label>First Name *</label>
+        <input type="text" class="box" required>
+      </div>
+
+      <div>
+        <label>Last Name *</label>
+        <input type="text" class="box" required>
+      </div>
+
+      <div>
+        <label>Email Address *</label>
+        <input type="email" class="box" required>
+      </div>
+
+      <div class="query">
+        <p>Query Type *</p>
+
+        <label class="query-option">
+          <input type="radio" name="query" required>
+          General Enquiry
+        </label>
+
+        <label class="query-option">
+          <input type="radio" name="query" required>
+          Support Request
+        </label>
+      </div>
+
+      <!-- por estilizar -->
+      
+      <label>Message *</label>
+      <textarea required></textarea>
+
+      <label>
+        <input type="checkbox" required>
+        I consent to being contacted by the team *
+      </label>
+
+      <button type="submit">Submit</button>
+      
+    </form>
+  </main>
+
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="#">Amanda Zulle</a>.
+  </footer>
+</body>
+
+</html>
+
+<!-- Please enter a valid email address
+This field is required
+Please select a query type 
+This field is required-->
+<!-- To submit this form, please consent to being contacted -->
+<!-- Message Sent!
+Thanks for completing the form. We'll be in touch soon! -->
