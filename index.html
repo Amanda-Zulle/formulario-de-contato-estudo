@@ -19,26 +19,36 @@
 
 <body>
   <main>
+    <div class="toast hidden" role="alert" aria-live="assertive">
+      <p>Message Sent!</p>
+      <p>Thanks for completing the form. We'll be in touch soon!</p>
+    </div>
     <form class="card">
       <h1>Contact Us</h1>
 
       <div>
-        <label>First Name *</label>
-        <input type="text" class="box" required>
+        <label>First Name *
+          <input type="text" class="box" required>
+        </label>
+        <span class="error-message" role="alert"></span>
       </div>
 
       <div>
-        <label>Last Name *</label>
-        <input type="text" class="box" required>
+        <label>Last Name *
+          <input type="text" class="box" required>
+        </label>
+        <span class="error-message" role="alert"></span>
       </div>
 
       <div>
-        <label>Email Address *</label>
-        <input type="email" class="box" required>
+        <label>Email Address *
+          <input type="email" class="box" required>
+        </label>
+        <span class="error-message" role="alert"></span>
       </div>
 
-      <div class="query">
-        <p>Query Type *</p>
+      <fieldset class="query">
+        <legend>Query Type *</legend>
 
         <label class="query-option">
           <input type="radio" name="query" required>
@@ -49,20 +59,22 @@
           <input type="radio" name="query" required>
           Support Request
         </label>
-      </div>
+        <span class="error-message" role="alert"></span>
+      </fieldset>
 
-      <!-- por estilizar -->
-      
-      <label>Message *</label>
-      <textarea required></textarea>
+      <label class="message">Message *
+        <textarea  class="box" required></textarea>
+      </label>
+      <span class="error-message" role="alert"></span>
 
-      <label>
+      <label class="consent">
         <input type="checkbox" required>
         I consent to being contacted by the team *
       </label>
+      <span class="error-message" role="alert"></span>
 
-      <button type="submit">Submit</button>
-      
+      <button class="btn" type="submit">Submit</button>
+
     </form>
   </main>
 

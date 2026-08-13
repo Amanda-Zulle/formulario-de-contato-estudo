@@ -1,27 +1,40 @@
+/* =========================
+    BODY
+========================= */
 body {
     font-family: "Karla", sans-serif;
     font-weight: 400;
     background-color: var(--green-200-lighter);
-    padding: 2rem;
+    padding: 1rem;
     margin: 0;
 }
 
-h1 {
-    margin-bottom: 1.5rem;
-}
-
+/* =========================
+    CARD
+========================= */
 .card {
     background-color: var(--white);
     padding: 2rem;
     border-radius: 0.95rem;
 }
 
-.card > div {
-    margin-bottom: 1rem;
+
+/* =========================
+    TITLE
+========================= */
+h1 {
+    margin-bottom: 2rem;
 }
 
-.card label{
-    display:block;
+/* =========================
+    FORM FIELDS
+========================= */
+.card > div {
+    margin-top: 1rem;
+}
+
+.card > div label {
+    display: block;
     margin-bottom: 0.5rem;
 }
 
@@ -30,24 +43,69 @@ h1 {
     padding: 0.8rem;
     border: 1px solid var(--grey-500-medium);
     border-radius: 0.45rem;
+    margin-top: 0.8rem;
 }
 
-.query p {
+.message {
+    display: block;
+}
+
+textarea.box {
+    min-height: 8rem;
+}
+
+/* =========================
+    QUERY TYPE
+========================= */
+.query {
+    border: 0;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.query legend {
     margin-bottom: 0.80rem;
 }
 
 .query-option {
+    display: block;
     border: 1px solid var(--grey-500-medium);
     padding: 0.8rem;
     border-radius: 0.45rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
+/* =========================
+    ATTRIBUTION
+========================= */
 .attribution {
     font-size: 0.6875rem;
     text-align: center;
+    margin-top: 1rem;
 }
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+.hidden {
+    display: none;
+}
+
+.btn {
+    display:block;
+    width:100%;
+    padding: 1rem;
+    background-color: var(--green-600-medium);
+    color: var(--white);
+    border: 0;
+    border-radius: 0.50rem;
+    margin-top: 2rem;
+}
+
+.consent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2.1rem;
 }

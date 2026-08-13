@@ -9,5 +9,6 @@
     /* Neutral */ 
     --white: hsl(0, 0%, 100%);
     --grey-500-medium: hsl(186, 15%, 59%);
-    --grey-900-darker: hsl(187, 24%, 22%);   
+    --grey-900-darker: hsl(187, 24%, 22%);
+    --link-color: hsl(228, 45%, 44%);
 }
