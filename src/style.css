@@ -23,6 +23,7 @@ body {
     TITLE
 ========================= */
 h1 {
+    font-size: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -31,6 +32,10 @@ h1 {
 ========================= */
 .card > div {
     margin-top: 1rem;
+}
+
+.card > .name-fields {
+    margin-top: 0;
 }
 
 .card > div label {
@@ -48,10 +53,11 @@ h1 {
 
 .message {
     display: block;
+    margin-top: 1rem;
 }
 
 textarea.box {
-    min-height: 8rem;
+    min-height: 6rem;
 }
 
 /* =========================
@@ -60,7 +66,12 @@ textarea.box {
 .query {
     border: 0;
     padding: 0;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+}
+
+.query-options {
+    display: grid;
+    gap: 1rem;
 }
 
 .query legend {
@@ -72,7 +83,6 @@ textarea.box {
     border: 1px solid var(--grey-500-medium);
     padding: 0.8rem;
     border-radius: 0.45rem;
-    margin-bottom: 1rem;
 }
 
 /* =========================
@@ -93,8 +103,8 @@ textarea.box {
 }
 
 .btn {
-    display:block;
-    width:100%;
+    display: block;
+    width: 100%;
     padding: 1rem;
     background-color: var(--green-600-medium);
     color: var(--white);
@@ -107,5 +117,5 @@ textarea.box {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 2.1rem;
+    margin-top: 1.5rem;
 }

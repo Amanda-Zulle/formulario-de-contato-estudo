@@ -1,0 +1,21 @@
+@media (min-width: 768px) {
+    body {
+        padding: 1.25rem;
+        margin: 2.25rem;
+    }
+
+    .card {
+        max-width: 36rem;
+        margin: 0 auto;
+    }
+
+    .name-fields{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.query-options {
+    grid-template-columns: 1fr 1fr;
+}
+}

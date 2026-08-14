@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./src/reset.css">
   <link rel="stylesheet" href="./src/base.css">
   <link rel="stylesheet" href="./src/style.css">
-  <link rel="stylesheet" href="./src/css/responsive.css">
+  <link rel="stylesheet" href="./src/responsive.css">
   <title>Contact form</title>
 
 </head>
@@ -26,6 +26,7 @@
     <form class="card">
       <h1>Contact Us</h1>
 
+      <div class="name-fields">
       <div>
         <label>First Name *
           <input type="text" class="box" required>
@@ -39,6 +40,7 @@
         </label>
         <span class="error-message" role="alert"></span>
       </div>
+      </div>
 
       <div>
         <label>Email Address *
@@ -50,6 +52,7 @@
       <fieldset class="query">
         <legend>Query Type *</legend>
 
+        <div class="query-options">
         <label class="query-option">
           <input type="radio" name="query" required>
           General Enquiry
@@ -59,6 +62,7 @@
           <input type="radio" name="query" required>
           Support Request
         </label>
+        </div>
         <span class="error-message" role="alert"></span>
       </fieldset>
 
