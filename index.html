@@ -4,97 +4,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact form challenge built with HTML, CSS and JavaScript.">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="./src/reset.css">
-  <link rel="stylesheet" href="./src/base.css">
-  <link rel="stylesheet" href="./src/style.css">
-  <link rel="stylesheet" href="./src/responsive.css">
+  <link rel="stylesheet" href="./src/css/reset.css">
+  <link rel="stylesheet" href="./src/css/base.css">
+  <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="stylesheet" href="./src/css/responsive.css">
   <title>Contact form</title>
-
 </head>
 
 <body>
-  <main>
-    <div class="toast hidden" role="alert" aria-live="assertive">
-      <p>Message Sent!</p>
+  <main class="page">
+    <div class="toast hidden" role="alert" aria-live="polite" aria-atomic="true" aria-hidden="true">
+      <div class="toast-title">
+        <img src="./assets/images/icon-success-check.svg" alt="" aria-hidden="true">
+        <strong>Message Sent!</strong>
+      </div>
       <p>Thanks for completing the form. We'll be in touch soon!</p>
     </div>
-    <form class="card">
+
+    <form class="card" novalidate>
       <h1>Contact Us</h1>
 
       <div class="name-fields">
-      <div>
-        <label>First Name *
-          <input type="text" class="box" required>
-        </label>
-        <span class="error-message" role="alert"></span>
+        <div class="form-group">
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" name="firstName" class="box" placeholder="John" required aria-describedby="first-name-error">
+          <span id="first-name-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" name="lastName" class="box" placeholder="Appleseed" required aria-describedby="last-name-error">
+          <span id="last-name-error" class="error-message" role="alert"></span>
+        </div>
       </div>
 
-      <div>
-        <label>Last Name *
-          <input type="text" class="box" required>
-        </label>
-        <span class="error-message" role="alert"></span>
-      </div>
-      </div>
-
-      <div>
-        <label>Email Address *
-          <input type="email" class="box" required>
-        </label>
-        <span class="error-message" role="alert"></span>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" class="box" placeholder="email@example.com" required aria-describedby="email-error">
+        <span id="email-error" class="error-message" role="alert"></span>
       </div>
 
       <fieldset class="query">
         <legend>Query Type *</legend>
 
-        <div class="query-options">
-        <label class="query-option">
-          <input type="radio" name="query" required>
-          General Enquiry
-        </label>
+        <div class="query-options" role="radiogroup" aria-describedby="query-error">
+          <label class="query-option">
+            <input type="radio" name="queryType" value="General Enquiry" required>
+            <span>General Enquiry</span>
+          </label>
 
-        <label class="query-option">
-          <input type="radio" name="query" required>
-          Support Request
-        </label>
+          <label class="query-option">
+            <input type="radio" name="queryType" value="Support Request" required>
+            <span>Support Request</span>
+          </label>
         </div>
-        <span class="error-message" role="alert"></span>
+        <span id="query-error" class="error-message" role="alert"></span>
       </fieldset>
 
-      <label class="message">Message *
-        <textarea  class="box" required></textarea>
-      </label>
-      <span class="error-message" role="alert"></span>
+      <div class="form-group message-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" class="box" placeholder="Hello, I would like to know if you're able to build Shopify e-commerce sites..." required aria-describedby="message-error"></textarea>
+        <span id="message-error" class="error-message" role="alert"></span>
+      </div>
 
-      <label class="consent">
-        <input type="checkbox" required>
-        I consent to being contacted by the team *
+      <label class="consent" for="consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <span>I consent to being contacted by the team *</span>
       </label>
-      <span class="error-message" role="alert"></span>
+      <span id="consent-error" class="error-message" role="alert"></span>
 
       <button class="btn" type="submit">Submit</button>
-
     </form>
   </main>
-
 
   <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
     Coded by <a href="#">Amanda Zulle</a>.
   </footer>
+
+  <script src="./src/js/index.js" defer></script>
 </body>
 
 </html>
-
-<!-- Please enter a valid email address
-This field is required
-Please select a query type 
-This field is required-->
-<!-- To submit this form, please consent to being contacted -->
-<!-- Message Sent!
-Thanks for completing the form. We'll be in touch soon! -->
