@@ -1,5 +1,6 @@
 const form = document.querySelector(".card");
 const toast = document.querySelector(".toast");
+
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fields = {
@@ -7,18 +8,22 @@ const fields = {
         input: document.querySelector("#first-name"),
         error: document.querySelector("#first-name-error")
     },
+
     lastName: {
         input: document.querySelector("#last-name"),
         error: document.querySelector("#last-name-error")
     },
+
     email: {
         input: document.querySelector("#email"),
         error: document.querySelector("#email-error")
     },
+
     message: {
         input: document.querySelector("#message"),
         error: document.querySelector("#message-error")
     },
+
     consent: {
         input: document.querySelector("#consent"),
         error: document.querySelector("#consent-error")
@@ -28,15 +33,40 @@ const fields = {
 const queryInputs = document.querySelectorAll('input[name="queryType"]');
 const queryError = document.querySelector("#query-error");
 
+
+/* ---------- Validation rules ---------- */
+
+const requiredRule = (value) =>
+    value === "" ? "This field is required" : "";
+
+const emailRules = [
+    requiredRule,
+    (value) =>
+        value && !emailPattern.test(value)
+            ? "Please enter a valid email address"
+            : ""
+];
+
+const consentRules = [
+    (value, input) =>
+        !input.checked
+            ? "To submit this form, please consent to being contacted"
+            : ""
+];
+
+
+/* ---------- Toast ---------- */
+
 const hideToast = () => {
     toast.classList.add("hidden");
-    toast.setAttribute("aria-hidden", "true");
 };
 
 const showToast = () => {
     toast.classList.remove("hidden");
-    toast.setAttribute("aria-hidden", "false");
 };
+
+
+/* ---------- Field state ---------- */
 
 const setFieldState = (field, message = "") => {
     const { input, error } = field;
@@ -46,27 +76,24 @@ const setFieldState = (field, message = "") => {
     error.textContent = message;
 };
 
-const clearFieldState = (field) => setFieldState(field, "");
-
-const validateQuery = () => {
-    const hasSelection = [...queryInputs].some((radio) => radio.checked);
-
-    if (!hasSelection) {
-        queryError.textContent = "Please select a query type";
-        return false;
-    }
-
-    queryError.textContent = "";
-    return true;
+const clearFieldState = (field) => {
+    setFieldState(field);
 };
 
+
+/* ---------- Field validation ---------- */
+
 const validateField = (field, rules = []) => {
-    const value = field.input.type === "checkbox" ? field.input.checked : field.input.value.trim();
+    const value =
+        field.input.type === "checkbox"
+            ? field.input.checked
+            : field.input.value.trim();
 
     for (const rule of rules) {
-        const result = rule(value, field.input);
-        if (result) {
-            setFieldState(field, result);
+        const message = rule(value, field.input);
+
+        if (message) {
+            setFieldState(field, message);
             return false;
         }
     }
@@ -74,6 +101,24 @@ const validateField = (field, rules = []) => {
     clearFieldState(field);
     return true;
 };
+
+
+/* ---------- Query validation ---------- */
+
+const validateQuery = () => {
+    const hasSelection = [...queryInputs].some(
+        (radio) => radio.checked
+    );
+
+    queryError.textContent = hasSelection
+        ? ""
+        : "Please select a query type";
+
+    return hasSelection;
+};
+
+
+/* ---------- Form validation ---------- */
 
 const validateForm = () => {
     hideToast();
@@ -83,31 +128,29 @@ const validateForm = () => {
 
     let isValid = true;
 
-    isValid = validateField(fields.firstName, [
-        (value) => (value === "" ? "This field is required" : "")
-    ]) && isValid;
+    isValid =
+        validateField(fields.firstName, [requiredRule]) && isValid;
 
-    isValid = validateField(fields.lastName, [
-        (value) => (value === "" ? "This field is required" : "")
-    ]) && isValid;
+    isValid =
+        validateField(fields.lastName, [requiredRule]) && isValid;
 
-    isValid = validateField(fields.email, [
-        (value) => (value === "" ? "This field is required" : ""),
-        (value) => (value && !emailPattern.test(value) ? "Please enter a valid email address" : "")
-    ]) && isValid;
+    isValid =
+        validateField(fields.email, emailRules) && isValid;
 
-    isValid = validateField(fields.message, [
-        (value) => (value === "" ? "This field is required" : "")
-    ]) && isValid;
+    isValid =
+        validateField(fields.message, [requiredRule]) && isValid;
 
-    isValid = validateField(fields.consent, [
-        (value, input) => (!input.checked ? "To submit this form, please consent to being contacted" : "")
-    ]) && isValid;
+    isValid =
+        validateField(fields.consent, consentRules) && isValid;
 
-    isValid = validateQuery() && isValid;
+    isValid =
+        validateQuery() && isValid;
 
     return isValid;
 };
+
+
+/* ---------- Submit ---------- */
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -120,34 +163,31 @@ form.addEventListener("submit", (event) => {
     showToast();
 });
 
-Object.values(fields).forEach(({ input }) => {
-    input.addEventListener("input", () => {
-        if (input.type === "checkbox") {
-            validateField(fields.consent, [
-                (value, checkbox) => (!checkbox.checked ? "To submit this form, please consent to being contacted" : "")
-            ]);
+
+/* ---------- Live validation ---------- */
+
+Object.entries(fields).forEach(([fieldKey, field]) => {
+    field.input.addEventListener("input", () => {
+        if (fieldKey === "email") {
+            validateField(field, emailRules);
             return;
         }
 
-        if (input.id === "email") {
-            validateField(fields.email, [
-                (value) => (value === "" ? "This field is required" : ""),
-                (value) => (value && !emailPattern.test(value) ? "Please enter a valid email address" : "")
-            ]);
+        if (fieldKey === "consent") {
+            validateField(field, consentRules);
             return;
         }
 
-        const fieldKey = input.name;
-        if (fields[fieldKey]) {
-            validateField(fields[fieldKey], [
-                (value) => (value === "" ? "This field is required" : "")
-            ]);
-        }
+        validateField(field, [requiredRule]);
     });
 });
 
+
+/* ---------- Query change ---------- */
+
 queryInputs.forEach((input) => {
-    input.addEventListener("change", () => validateQuery());
+    input.addEventListener("change", validateQuery);
 });
+
 
 hideToast();
