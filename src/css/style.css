@@ -139,6 +139,10 @@ textarea.box {
     cursor: pointer;
 }
 
+.consent span {
+    padding: 0.8rem;
+}
+
 .consent input {
     accent-color: var(--green-600-medium);
 }

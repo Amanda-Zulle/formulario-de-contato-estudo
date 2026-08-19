@@ -20,9 +20,9 @@ O objetivo do projeto é construir um formulário de contato no qual os usuário
 
 ### Screenshot
 
-![Screenshot do formulário de contato](./src/images/screenshot/desktop.png)
-![Screenshot do formulário de contato](./src/images/screenshot/desktop-sucess.png)
-![Screenshot do formulário de contato](./src/images/screenshot/mobile.png)
+![Screenshot do formulário de contato](./src/images/desktop-sucess.png)
+![Screenshot do formulário de contato](./src/images/desktop.png)
+![Screenshot do formulário de contato](./src/images/mobile.png)
 
 ## Tecnologias utilizadas
 
